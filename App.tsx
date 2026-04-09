@@ -18,10 +18,26 @@ export default function App() {
   React.useEffect(() => {
     // OneSignal Initialization
     const osId = process.env.EXPO_PUBLIC_ONESIGNAL_APP_ID || "";
-    if (osId) OneSignal.initialize(osId);
-    
-    // Also request permissions (required for iOS)
-    OneSignal.Notifications.requestPermission(true);
+    if (osId) {
+      OneSignal.initialize(osId);
+      
+      // Request permissions (required for iOS)
+      OneSignal.Notifications.requestPermission(true);
+
+      // Handle notification clicks
+      OneSignal.Notifications.addEventListener('click', (event) => {
+        console.log('OneSignal: notification clicked:', event);
+        const data: any = event.notification.additionalData;
+        
+        if (data && data.alertId) {
+          const { navigate } = require('./src/services/navigation');
+          navigate('IncidentChat', { 
+            alertId: data.alertId, 
+            alertTitle: data.type === 'panic' ? 'Emergência Próxima' : 'Ocorrência Próxima' 
+          });
+        }
+      });
+    }
   }, []);
 
   if (!fontsLoaded) {

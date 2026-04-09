@@ -21,6 +21,7 @@ import { ChatListScreen } from '../screens/ChatListScreen';
 import { PanicButton } from '../components/PanicButton';
 import { colors } from '../theme/colors';
 import { useAuth } from '../context/AuthContext';
+import { navigationRef } from '../services/navigation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -152,7 +153,7 @@ export const AppNavigator = () => {
     profile.subscription_status !== 'syndic_pro';
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator key={navigatorKey} screenOptions={{ headerShown: false }}>
         {!user ? (
           <>
