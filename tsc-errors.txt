@@ -1,0 +1,3 @@
+﻿src/components/PanicButton.tsx(5,26): error TS2307: Cannot find module '@expo/vector-icons' or its corresponding type declarations.
+src/navigation/AppNavigator.tsx(5,26): error TS2307: Cannot find module '@expo/vector-icons' or its corresponding type declarations.
+src/screens/HomeScreen.tsx(5,26): error TS2307: Cannot find module '@expo/vector-icons' or its corresponding type declarations.

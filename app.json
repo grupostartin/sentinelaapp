@@ -3,6 +3,7 @@
     "name": "sentinela-app",
     "slug": "sentinela-app",
     "version": "1.0.0",
+    "scheme": "sentinela",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,10 +22,36 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.grupostartin.sentinelaapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationAlwaysPermission": "O Sentinela precisa da sua localização para ativar o raio de segurança.",
+          "locationWhenInUsePermission": "O Sentinela precisa da sua localização para ativar o raio de segurança."
+        }
+      ],
+      [
+        "onesignal-expo-plugin",
+        {
+          "mode": "production"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "59cd5658-2512-4e4c-8213-20cc55bafdb2"
+      }
     }
   }
 }
